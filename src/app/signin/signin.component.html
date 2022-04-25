@@ -1,0 +1,39 @@
+<ng-template #elseBlock>
+  <div class="LoginCtrl">
+    <button id="login-google" type="button" (click)="authService.GoogleAuth()">
+      Log in with Google
+    </button>
+  </div>
+</ng-template>
+
+<!-- if logged in, displays list, buttons, input, etc. -->
+<div *ngIf="authService.isLoggedIn; else elseBlock">
+  <div>
+    <div id="divs">
+      <div id="todo">
+        <p>To-Do Count:</p>
+        <p id="todo-count"></p>
+      </div>
+      <div id="done">
+        <p>Done Count:</p>
+        <p id="done-count"></p>
+      </div>
+    </div>
+    <div class="input-submit">
+      <input id="item" type="text">
+      <button id="click" (click)="getText()">Submit</button>
+      <button id="clear" (click)="clearAll()">Clear</button>
+    </div>
+
+    <div id="show">
+      <ol>
+        <li *ngFor="let todo of myList; let i = index">
+          <input class="todo-item" id="don-btn" type="checkbox" (click)="doneItem(i)"> <!-- checkbox -->
+            {{ todo.name }}
+          <span id="del-btn" (click)=delItem(i)> &#9003; </span>  <!-- delete button -->
+        </li>
+      </ol>
+    </div>
+
+  </div>
+</div>  
